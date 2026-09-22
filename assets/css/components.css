@@ -1,0 +1,365 @@
+/* ==========================================================================
+   FlyCommerce — Components
+   Buttons, nav, arrow badges, decorative backdrops.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Buttons
+   Figma: h 68, radius full, pl 40 / pr 11, label Sora SemiBold 16/19.
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-16);
+  height: 68px;
+  border-radius: var(--r-full);
+  font-family: var(--font-sora);
+  font-weight: 600;
+  font-size: var(--p-rg);
+  line-height: 19px;
+  white-space: nowrap;
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn__icon {
+  display: grid;
+  place-items: center;
+  width: 45.86px;
+  height: 45.64px;
+  border-radius: var(--r-full);
+  flex: none;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease;
+}
+
+.btn__icon svg {
+  width: 22.98px;
+  height: 22.98px;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Primary — solid FlyCommerce blue with a white arrow puck */
+.btn--primary {
+  padding: 25px 11px 25px 40px;
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn--primary .btn__icon {
+  background: var(--white);
+  color: var(--primary);
+}
+
+.btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(21, 93, 252, 0.32);
+}
+
+.btn--primary:hover .btn__icon {
+  transform: rotate(45deg);
+}
+
+/* Ghost — white pill with hairline border (Watch video / View all themes) */
+.btn--ghost {
+  padding: 25px 14px 25px 30px;
+  background: var(--white);
+  border: 0.936px solid var(--stroke-lite);
+  color: var(--heading-font);
+  filter: drop-shadow(var(--shadow-btn));
+}
+
+.btn--ghost .btn__icon {
+  background: var(--text-900);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+}
+
+.btn--ghost .btn__icon svg {
+  width: 18.26px;
+  height: 18.26px;
+}
+
+.btn--ghost:hover {
+  transform: translateY(-3px);
+  border-color: rgba(21, 93, 252, 0.35);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+}
+
+.btn--ghost:hover .btn__icon {
+  background: var(--primary);
+  transform: rotate(45deg);
+}
+
+/* Watch video — icon sits on the right with generous inner spacing */
+.btn--video {
+  padding: 25px 30px 25px 30px;
+  gap: 18px;
+}
+
+.btn--video .btn__icon {
+  width: 40.98px;
+  height: 40.98px;
+  background: transparent;
+  color: var(--text-900);
+  border: 0;
+}
+
+.btn--video .btn__icon svg {
+  width: 40.98px;
+  height: 40.98px;
+}
+
+.btn--video:hover .btn__icon {
+  transform: scale(1.08);
+  background: transparent;
+}
+
+/* Light — white pill on a coloured surface (Start Building Now) */
+.btn--light {
+  padding: 25px 14px 25px 30px;
+  background: var(--white);
+  color: var(--text-900);
+}
+
+.btn--light .btn__icon {
+  background: var(--text-900);
+  color: var(--white);
+  width: 40px;
+  height: 40px;
+}
+
+.btn--light .btn__icon svg {
+  width: 18.26px;
+  height: 18.26px;
+}
+
+.btn--light:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(4, 22, 66, 0.28);
+}
+
+.btn--light:hover .btn__icon {
+  transform: rotate(45deg);
+}
+
+/* Compact dark nav CTA — Figma "Medium Button", px 32 / py 16 */
+.btn--nav {
+  height: auto;
+  padding: 16px 32px;
+  background: var(--text-900);
+  border: 1px solid var(--text-900);
+  color: var(--white);
+  gap: 0;
+}
+
+.btn--nav:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(21, 93, 252, 0.3);
+}
+
+/* Small-scale primary used inside the "How it works" column */
+.btn--sm {
+  height: 58px;
+  padding: 20px 9px 20px 32px;
+  font-size: 14px;
+}
+
+.btn--sm .btn__icon {
+  width: 39px;
+  height: 39px;
+}
+
+.btn--sm .btn__icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* --------------------------------------------------------------------------
+   Circular arrow badge (accordion panels, store rows)
+   -------------------------------------------------------------------------- */
+
+.arrow-badge {
+  display: grid;
+  place-items: center;
+  width: 45.86px;
+  height: 45.64px;
+  border-radius: var(--r-full);
+  background: var(--white);
+  border: 1.352px solid var(--stroke-lite);
+  color: var(--text-900);
+  flex: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.arrow-badge svg {
+  width: 22.98px;
+  height: 22.98px;
+}
+
+.arrow-badge--translucent {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
+  color: var(--white);
+}
+
+.arrow-badge--soft {
+  background: #e8eefc;
+  border-color: transparent;
+  color: var(--primary);
+  width: 42px;
+  height: 42px;
+}
+
+.arrow-badge--soft svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   Check pill — white capsule with a green tick (marketplace + vendor panels)
+   Figma: pl 10 / pr 30 / py 9, radius 75, shadow 0 3 10 rgba(0,0,0,.05)
+   -------------------------------------------------------------------------- */
+
+.check-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 30px 9px 10px;
+  border-radius: 75px;
+  background: var(--white);
+  box-shadow: var(--shadow-chip);
+  font-family: var(--font-lato);
+  font-size: var(--p-rg);
+  line-height: 1.3;
+  color: var(--body-large);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.check-pill:hover {
+  transform: translateX(6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.check-pill .tick {
+  width: 25.32px;
+  height: 25.32px;
+  flex: none;
+}
+
+/* Circular tick / cross glyphs used by the Problem vs Solution lists */
+.tick {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
+  flex: none;
+}
+
+.tick--green {
+  background: var(--green-500);
+  color: var(--white);
+}
+
+.tick--muted {
+  background: var(--bg-100);
+  color: #64748b;
+}
+
+.tick svg {
+  width: 60%;
+  height: 60%;
+}
+
+/* --------------------------------------------------------------------------
+   Decorative backdrops
+   -------------------------------------------------------------------------- */
+
+/* Fine graph-paper grid behind the hero, business types and CTA bands */
+.grid-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-position: 0 0;
+}
+
+/* Dot matrix used on the blue page-builder band */
+.dot-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.16) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 18px 18px;
+}
+
+/* --------------------------------------------------------------------------
+   Marquee rails
+   -------------------------------------------------------------------------- */
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-reveal primitives — neutralised when motion is reduced
+   -------------------------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.js-off .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

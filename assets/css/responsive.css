@@ -1,0 +1,640 @@
+/* ==========================================================================
+   FlyCommerce — Responsive
+   The 1920 comp is the ceiling; below it the same column structure compresses
+   and then stacks, preserving the Figma ordering and rhythm.
+   ========================================================================== */
+
+@media (max-width: 1500px) {
+  :root {
+    --section-gap: 120px;
+  }
+
+  .steps__grid {
+    gap: 120px;
+  }
+
+  .gateways {
+    gap: 64px;
+    padding: 72px;
+  }
+
+  .platform__tabs {
+    gap: 44px;
+  }
+}
+
+@media (max-width: 1240px) {
+  :root {
+    --section-gap: 104px;
+  }
+
+  .nav__links {
+    gap: 26px;
+  }
+
+  .hero {
+    padding-top: 172px;
+  }
+
+  .hero__visual {
+    height: auto;
+    grid-template-columns: 1.7fr 1fr;
+  }
+
+  .hero-pane--wide,
+  .hero-pane--tall {
+    height: 560px;
+  }
+
+  .store-mock {
+    left: 64px;
+    top: 66px;
+    width: 640px;
+  }
+
+  .page-strip {
+    left: 530px;
+    top: 66px;
+  }
+
+  .steps__grid {
+    grid-template-columns: 1fr;
+    gap: 72px;
+  }
+
+  .step-card {
+    width: min(479px, 100%);
+  }
+
+  .solution-card {
+    padding: 48px;
+  }
+
+  .cap-panel {
+    padding: 48px;
+  }
+
+  .cap-panel__reveal > div {
+    min-width: 440px;
+  }
+
+  .duo-card {
+    padding: 48px 48px 0;
+  }
+
+  .business__grid {
+    gap: 0 32px;
+  }
+
+  .biz-card {
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 1080px) {
+  :root {
+    --section-gap: 88px;
+  }
+
+  /* Nav collapses to a slide-down drawer */
+  .nav__links {
+    position: fixed;
+    inset: 102px 16px auto 16px;
+    transform: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 20px;
+    border-radius: var(--r-20);
+    background: var(--white);
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 -12px;
+    transition: opacity 0.3s ease, translate 0.35s ease, visibility 0.3s;
+  }
+
+  .nav.is-open .nav__links {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+  }
+
+  .nav__links .nav__link {
+    width: 100%;
+    padding: 12px 8px;
+    font-size: 16px;
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav__burger {
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav__login {
+    display: none;
+  }
+
+  .nav__links .nav__link--login {
+    display: inline-flex;
+  }
+
+  .nav__links .nav__drawer-cta {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .platform__panel {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .platform__panel-left {
+    padding: 48px;
+  }
+
+  .platform__panel-right {
+    padding: 48px;
+  }
+
+  .store-row {
+    width: 100%;
+  }
+
+  .payments__grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .payments__visual {
+    height: 480px;
+  }
+
+  .builder__head {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .builder__aside {
+    padding-top: 0;
+  }
+
+  .gateways {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .business__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reviews__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-feature {
+    min-height: 0;
+    order: -1;
+  }
+
+  .cta__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer__top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+  }
+
+  .footer__newsletter {
+    margin-top: 72px;
+  }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --section-gap: 72px;
+  }
+
+  .hero {
+    padding-top: 148px;
+  }
+
+  .hero__headline-row {
+    gap: 8px;
+  }
+
+  .hero__badge {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero__badge svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 40px;
+  }
+
+  .hero__proof {
+    margin-top: 40px;
+  }
+
+  .hero__visual {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 64px;
+  }
+
+  .hero-pane--wide {
+    height: 420px;
+  }
+
+  .hero-pane--tall {
+    height: 520px;
+  }
+
+  .store-mock {
+    left: 28px;
+    top: 44px;
+    width: 560px;
+  }
+
+  .page-strip {
+    display: none;
+  }
+
+  .solution__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .solution-card {
+    padding: 36px 28px;
+  }
+
+  .step-row {
+    gap: 24px !important;
+    align-items: flex-start;
+  }
+
+  .step-row__num {
+    width: 48px;
+    height: 48px;
+    font-size: 19px;
+  }
+
+  .step-card {
+    height: auto;
+    min-height: 210px;
+    transform: none !important;
+  }
+
+  .step-card__body {
+    position: static;
+    transform: none;
+    padding: 32px 28px;
+  }
+
+  .step-row:hover .step-card {
+    transform: translateY(-4px) !important;
+  }
+
+  .themes__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .themes__rails {
+    margin-top: 56px;
+  }
+
+  .theme-card {
+    width: 400px;
+    height: 250px;
+    margin-right: 24px;
+  }
+
+  .builder {
+    padding-top: 88px;
+  }
+
+  .builder__frame {
+    margin-top: 56px;
+    padding: 8px;
+  }
+
+  /* Editor chrome compresses rather than reflowing */
+  .builder-ui__bar {
+    gap: 10px;
+    padding: 10px 12px;
+    font-size: 9px;
+  }
+
+  .builder-ui__select,
+  .builder-ui__devices {
+    display: none;
+  }
+
+  .builder-ui__showcase {
+    grid-template-columns: 1fr;
+    padding: 18px 18px 0;
+  }
+
+  .builder-ui__panel--green h4 {
+    font-size: 26px;
+  }
+
+  .builder-ui__topbar,
+  .builder-ui__storenav {
+    padding-inline: 18px;
+  }
+
+  .builder-ui__storenav ul {
+    display: none;
+  }
+
+  .shipping__stage {
+    height: 440px;
+  }
+
+  .ship-float--tag {
+    right: calc(50% - 170px);
+  }
+  .ship-float--doc {
+    left: calc(50% - 176px);
+  }
+  .ship-float--route {
+    right: calc(50% - 176px);
+  }
+  .ship-float--check {
+    left: calc(50% - 128px);
+  }
+
+  .shipping__features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  /* Accordion becomes a stacked list */
+  .capabilities {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .cap-panel,
+  .cap-panel.is-open {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 40px 28px;
+  }
+
+  .cap-panel__reveal > div {
+    min-width: 0;
+  }
+
+  .cap-panel__glyph {
+    width: 130px;
+    height: 130px;
+    right: 12px;
+    bottom: -10px;
+  }
+
+  .cap-panel__foot {
+    margin-top: 28px;
+  }
+
+  .duo {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .duo-card {
+    min-height: 0;
+    padding: 40px 28px 0;
+  }
+
+  .duo-card__art {
+    height: 270px;
+    margin-top: 40px;
+  }
+
+  .gateways {
+    padding: 40px 28px;
+  }
+
+  .gateways__grid {
+    gap: 10px;
+  }
+
+  .business__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .biz-card {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.07);
+  }
+
+  .biz-card__text {
+    max-width: none;
+  }
+
+  .faq__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-item__btn {
+    min-height: 88px;
+    padding: 22px 28px;
+  }
+
+  .faq-item__panel p {
+    padding: 0 28px 26px;
+  }
+
+  .cta {
+    padding-block: 72px;
+  }
+
+  .footer {
+    padding-top: 72px;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer__newsletter {
+    margin-top: 48px;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .nav__actions > .btn--nav {
+    display: none;
+  }
+
+  .brand__word {
+    font-size: 22px;
+  }
+
+  /* Keep the floating badges inside the narrower shipping stage */
+  .ship-float--check {
+    left: 16px;
+    top: 150px;
+    width: 40px;
+    height: 40px;
+  }
+  .ship-float--tag {
+    right: 10px;
+    top: 140px;
+    width: 58px;
+    height: 58px;
+  }
+  .ship-float--doc {
+    left: 10px;
+    bottom: 96px;
+    width: 56px;
+    height: 56px;
+  }
+  .ship-float--route {
+    right: 14px;
+    bottom: 84px;
+    width: 66px;
+    height: 66px;
+  }
+  .ship-float--avatar {
+    width: 62px;
+    height: 62px;
+  }
+
+  .ship-ui {
+    width: 232px;
+    height: 176px;
+  }
+
+  .ship-ui__truck {
+    width: 128px;
+    height: 68px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container {
+    padding-inline: 20px;
+  }
+
+  .hero__headline-row {
+    flex-direction: row;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero__cta-primary {
+    width: 100%;
+  }
+
+  .btn--video {
+    justify-content: center;
+  }
+
+  .hero-pane--wide {
+    height: 320px;
+  }
+
+  .hero-pane--tall {
+    height: 460px;
+  }
+
+  .store-mock {
+    left: 16px;
+    top: 30px;
+    width: 460px;
+  }
+
+  .phone-mock {
+    top: 60px;
+    width: 206px;
+    height: 430px;
+  }
+
+  .integrations__head::before,
+  .integrations__head::after {
+    display: none;
+  }
+
+  .integrations__title {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .theme-card {
+    width: 300px;
+    height: 190px;
+    margin-right: 16px;
+  }
+
+  .shipping__features {
+    grid-template-columns: 1fr;
+  }
+
+  .payments__visual {
+    height: 400px;
+  }
+
+  .pay-ui {
+    width: 320px;
+  }
+
+  .pay-badge--check {
+    right: 18px;
+    top: 132px;
+    width: 54px;
+    height: 54px;
+  }
+
+  .pay-badge--coin {
+    left: 16px;
+    top: 236px;
+  }
+
+  .gateways__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gateway-tile--empty:nth-of-type(n) {
+    display: none;
+  }
+
+  .review-feature {
+    padding: 40px 24px;
+  }
+
+  .review-feature__avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .footer__form {
+    width: 100%;
+  }
+}

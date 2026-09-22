@@ -1,0 +1,26 @@
+{
+  "name": "flycommerce-website",
+  "version": "1.0.0",
+  "description": "FlyCommerce marketing site — a 1:1 implementation of the Figma home page design.",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8099",
+    "vendor": "cp node_modules/gsap/dist/gsap.min.js node_modules/gsap/dist/ScrollTrigger.min.js node_modules/lenis/dist/lenis.min.js assets/vendor/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashrafux/flycommerce-website.git"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ashrafux/flycommerce-website/issues"
+  },
+  "homepage": "https://github.com/ashrafux/flycommerce-website#readme",
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.11"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
