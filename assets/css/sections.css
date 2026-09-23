@@ -375,62 +375,29 @@
   background: #e8e2f2;
 }
 
-.hero-pane--wide::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(
-      32% 42% at 18% 22%,
-      rgba(244, 175, 185, 0.95) 0%,
-      rgba(244, 175, 185, 0) 70%
-    ),
-    radial-gradient(
-      34% 40% at 52% 8%,
-      rgba(186, 160, 233, 0.95) 0%,
-      rgba(186, 160, 233, 0) 70%
-    ),
-    radial-gradient(
-      32% 44% at 88% 26%,
-      rgba(152, 191, 235, 0.9) 0%,
-      rgba(152, 191, 235, 0) 70%
-    ),
-    radial-gradient(
-      36% 40% at 14% 82%,
-      rgba(198, 213, 176, 0.85) 0%,
-      rgba(198, 213, 176, 0) 70%
-    ),
-    radial-gradient(
-      36% 42% at 78% 88%,
-      rgba(246, 196, 176, 0.9) 0%,
-      rgba(246, 196, 176, 0) 70%
-    );
-  filter: blur(26px);
-}
-
 .hero-pane--tall {
-  background: linear-gradient(155deg, #e7c7dd 0%, #f0c9c4 55%, #f6d9c8 100%);
+  background: #f0cfc9;
 }
 
-.hero-pane--tall::before {
-  content: "";
-  position: absolute;
-  inset: -15%;
-  background: radial-gradient(
-      44% 34% at 20% 10%,
-      rgba(199, 168, 226, 0.8) 0%,
-      rgba(199, 168, 226, 0) 70%
-    ),
-    radial-gradient(
-      44% 36% at 84% 86%,
-      rgba(247, 205, 178, 0.9) 0%,
-      rgba(247, 205, 178, 0) 70%
-    );
-  filter: blur(20px);
-}
-
+/* Overscanned so the pointer tilt (max 16x / 12y) never exposes an edge */
 .hero-pane__inner {
   position: absolute;
-  inset: 0;
+  inset: -24px;
+}
+
+.hero-pane__img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  /* Anchor to the top so the browser chrome stays whole and the crop is
+     taken off the bottom, the way the comp cuts it. */
+  object-position: center top;
+}
+
+/* The phone plate already matches the pane's 399 x 655 ratio exactly */
+.hero-pane__img--contain {
+  object-position: center;
 }
 
 /* --------------------------------------------------------------------------
