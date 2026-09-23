@@ -738,6 +738,35 @@
     });
   }
 
+  function initNewsletter() {
+    var form = document.querySelector(".footer__form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (event) {
+      // No endpoint to post to — keep the page from navigating away.
+      event.preventDefault();
+
+      var input = form.querySelector("input");
+      var button = form.querySelector("button");
+      if (!input || !button) return;
+
+      if (!input.value.trim() || !input.checkValidity()) {
+        input.focus();
+        return;
+      }
+
+      var label = button.textContent;
+      button.textContent = "Subscribed";
+      button.disabled = true;
+      input.value = "";
+
+      window.setTimeout(function () {
+        button.textContent = label;
+        button.disabled = false;
+      }, 2600);
+    });
+  }
+
   function initDots() {
     var dots = Array.prototype.slice.call(
       document.querySelectorAll(".business__dots button")
@@ -767,6 +796,7 @@
     initFaq();
     initFeatureLists();
     initPlatformTabs();
+    initNewsletter();
     initDots();
     initReveals();
     initTilt();
