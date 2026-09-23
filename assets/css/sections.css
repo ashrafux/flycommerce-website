@@ -7,25 +7,22 @@
    1. Navigation — Figma 1920 x 102
    -------------------------------------------------------------------------- */
 
+/* Sits in flow at the top of the page and scrolls away with it. Relative
+   so it still wins the stacking order, and so the mega-menu panel and the
+   mobile drawer can anchor to it. */
 .nav {
-  position: fixed;
-  inset: 0 0 auto 0;
+  position: relative;
   z-index: 60;
   height: 102px;
   display: flex;
   align-items: center;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease,
-    backdrop-filter 0.4s ease;
 }
 
-.nav.is-stuck {
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.07), 0 12px 30px rgba(15, 23, 42, 0.05);
-}
-
+/* Stretched to the nav's full 102px so .nav__links spans the whole row and
+   the mega panel's `top: 100%` lands exactly on the nav's bottom edge. */
 .nav__inner {
   position: relative;
+  align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -185,7 +182,7 @@
 
 .hero {
   position: relative;
-  padding-top: 202px;
+  padding-top: 100px;
   overflow: hidden;
 }
 

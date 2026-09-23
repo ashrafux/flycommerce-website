@@ -588,12 +588,6 @@
     var burger = document.getElementById("navBurger");
     if (!nav) return;
 
-    var onScroll = function () {
-      nav.classList.toggle("is-stuck", window.scrollY > 24);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
     if (burger) {
       burger.addEventListener("click", function () {
         var open = nav.classList.toggle("is-open");
@@ -618,10 +612,10 @@
           if (burger) burger.setAttribute("aria-expanded", "false");
 
           if (lenis) {
-            lenis.scrollTo(target, { offset: -102, duration: 1.2 });
+            lenis.scrollTo(target, { offset: -24, duration: 1.2 });
           } else {
             var top =
-              target.getBoundingClientRect().top + window.scrollY - 102;
+              target.getBoundingClientRect().top + window.scrollY - 24;
             window.scrollTo({ top: top, behavior: "smooth" });
           }
         });

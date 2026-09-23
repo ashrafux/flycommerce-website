@@ -33,7 +33,7 @@
   }
 
   .hero {
-    padding-top: 172px;
+    padding-top: 70px;
   }
 
   .hero__visual {
@@ -87,7 +87,7 @@
 
   /* Nav collapses to a slide-down drawer */
   .nav__links {
-    position: fixed;
+    position: absolute;
     inset: 102px 16px auto 16px;
     transform: none;
     flex-direction: column;
@@ -217,7 +217,7 @@
   }
 
   .hero {
-    padding-top: 148px;
+    padding-top: 46px;
   }
 
   .hero__headline-row {
