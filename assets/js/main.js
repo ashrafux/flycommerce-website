@@ -384,7 +384,16 @@
       // style that the .is-open rule can no longer beat.
       .from(
         [".nav .brand", ".nav__links > *", ".nav__actions > *"],
-        { y: -18, opacity: 0, duration: 0.7, stagger: 0.06 },
+        {
+          y: -18,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.06,
+          // Without this GSAP leaves an identity transform behind, and even
+          // an identity transform makes the element a containing block for
+          // `position: fixed` — which would re-anchor the mega-menu panel.
+          clearProps: "transform"
+        },
         0.1
       );
 
@@ -593,8 +602,10 @@
     }
 
     // Anchor links route through Lenis so the easing matches the page.
+    // A mega-menu trigger is skipped: it owns a panel, and initMegaMenu
+    // binds its own click that toggles instead of navigating.
     Array.prototype.forEach.call(
-      document.querySelectorAll('a[href^="#"]'),
+      document.querySelectorAll('a[href^="#"]:not([data-mega] > .nav__link)'),
       function (link) {
         link.addEventListener("click", function (event) {
           var id = link.getAttribute("href");
@@ -738,6 +749,135 @@
     });
   }
 
+  /* ------------------------------------------------------------------
+     Features mega menu — hover intent on desktop, tap-to-expand in the
+     drawer, and fully operable from the keyboard either way.
+     ------------------------------------------------------------------ */
+
+  function initMegaMenu() {
+    var items = Array.prototype.slice.call(
+      document.querySelectorAll("[data-mega]")
+    );
+    if (!items.length) return;
+
+    var drawer = function () {
+      return window.matchMedia("(max-width: 1080px)").matches;
+    };
+
+    items.forEach(function (item) {
+      var trigger = item.querySelector(".nav__link");
+      var panel = item.querySelector(".mega");
+      if (!trigger || !panel) return;
+
+      var openTimer = null;
+      var closeTimer = null;
+
+      var clear = function () {
+        window.clearTimeout(openTimer);
+        window.clearTimeout(closeTimer);
+      };
+
+      var setOpen = function (open) {
+        clear();
+        item.classList.toggle("is-open", open);
+        trigger.setAttribute("aria-expanded", String(open));
+
+        if (open && !reduceMotion && hasGsap && !drawer()) {
+          gsap.fromTo(
+            panel.querySelectorAll(".mm-item, .mm-card"),
+            { y: 10, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.42,
+              ease: "power2.out",
+              stagger: 0.018,
+              overwrite: true
+            }
+          );
+        }
+      };
+
+      // Hover intent: a short lead-in stops the panel flashing as the
+      // pointer crosses the nav, and a longer lead-out lets it travel
+      // down into the panel.
+      var hoverOpen = function () {
+        if (drawer()) return;
+        clear();
+        openTimer = window.setTimeout(function () {
+          setOpen(true);
+        }, 90);
+      };
+
+      var hoverClose = function () {
+        if (drawer()) return;
+        clear();
+        closeTimer = window.setTimeout(function () {
+          setOpen(false);
+        }, 220);
+      };
+
+      item.addEventListener("pointerenter", function (event) {
+        if (event.pointerType === "touch") return;
+        hoverOpen();
+      });
+      item.addEventListener("pointerleave", function (event) {
+        if (event.pointerType === "touch") return;
+        hoverClose();
+      });
+
+      // The trigger is a real link, so a tap/click opens the panel
+      // instead of navigating while it is still closed.
+      // The trigger is a real link, but while it owns a panel a click
+      // toggles that panel rather than navigating.
+      trigger.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setOpen(!item.classList.contains("is-open"));
+      });
+
+      trigger.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          setOpen(true);
+          var first = panel.querySelector(".mm-item");
+          if (first) first.focus();
+        }
+      });
+
+      item.addEventListener("keydown", function (event) {
+        if (event.key !== "Escape") return;
+        setOpen(false);
+        trigger.focus();
+      });
+
+      // Keep it open while focus is inside, close once focus leaves.
+      item.addEventListener("focusin", function () {
+        if (!drawer()) setOpen(true);
+      });
+      item.addEventListener("focusout", function () {
+        window.setTimeout(function () {
+          if (!item.contains(document.activeElement)) setOpen(false);
+        }, 0);
+      });
+
+      // A click anywhere else dismisses it.
+      document.addEventListener("click", function (event) {
+        if (!item.contains(event.target)) setOpen(false);
+      });
+
+      // Links inside the panel should close it on the way out.
+      Array.prototype.forEach.call(
+        panel.querySelectorAll("a"),
+        function (link) {
+          link.addEventListener("click", function () {
+            setOpen(false);
+          });
+        }
+      );
+    });
+  }
+
   function initNewsletter() {
     var form = document.querySelector(".footer__form");
     if (!form) return;
@@ -796,6 +936,7 @@
     initFaq();
     initFeatureLists();
     initPlatformTabs();
+    initMegaMenu();
     initNewsletter();
     initDots();
     initReveals();

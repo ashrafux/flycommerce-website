@@ -1,0 +1,435 @@
+/* ==========================================================================
+   FlyCommerce — Features mega menu
+   Boxes, spacing, radii and type are the Figma export verbatim:
+   panel 1140 x 558 / padding 28 / radius 12, columns gap 32, e-commerce
+   section 742 with two 361 columns at gap 20, marketplace rail 310.
+   Item heights fall out of the content (32 padding + 22 or 17 title row
+   + 4 + 16 or 32 description = 74 / 69 / 85), so they are not pinned.
+   ========================================================================== */
+
+.nav__item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   Panel shell
+   -------------------------------------------------------------------------- */
+
+.mega {
+  position: fixed;
+  top: 102px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 70;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 28px;
+
+  width: 1140px;
+  max-width: calc(100vw - 48px);
+
+  background: #ffffff;
+  border-radius: 12px;
+
+  /* Not in the export — a panel that floats over the page needs to detach
+     from it. Kept low so the flat surface of the comp survives. */
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.13),
+    0 2px 8px rgba(15, 23, 42, 0.06);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, visibility 0.22s, translate 0.28s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav__item.is-open .mega {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* The chevron flips while the panel is down */
+.nav__item.is-open > .nav__link {
+  color: var(--primary);
+}
+
+.nav__item.is-open > .nav__link svg {
+  transform: rotate(180deg);
+}
+
+.mega__columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 32px;
+  width: 1084px;
+  height: 502px;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Left: e-commerce feature grid — 742 wide
+   -------------------------------------------------------------------------- */
+
+.mega__section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 742px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.mega__eyebrow {
+  font-family: var(--font-lato);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #475569;
+}
+
+.mega__subcolumns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.mega__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 361px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Feature row
+   -------------------------------------------------------------------------- */
+
+.mm-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 12px;
+  width: 100%;
+
+  background: #ffffff;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* The comp captures this row mid-hover — #F7F7F7 is the hover fill */
+.mm-item:hover,
+.mm-item:focus-visible {
+  background: #f7f7f7;
+}
+
+.mm-item__icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  color: #155dfc;
+}
+
+.mm-item__icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.mm-item__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.mm-item__head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.mm-item__title {
+  font-family: var(--font-inter);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #0f172a;
+}
+
+.mm-item__desc {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #475569;
+  width: 100%;
+  /* The webfont runs ~1px wider than Figma's Inter, which is just enough to
+     wrap "Manage orders, returns, refunds, and fulfillment." onto a second
+     line and push the column 16px past the comp. Imperceptible at 13px. */
+  letter-spacing: -0.01em;
+}
+
+/* "New" pill — the export carries the box but not its stroke colour */
+.mm-chip {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2px 8px;
+  gap: 10px;
+  height: 22px;
+  flex: none;
+
+  border: 1px solid #e0246c;
+  border-radius: 20px;
+
+  font-family: var(--font-lato);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Right: marketplace rail — 310 wide, two 239-tall cards
+   -------------------------------------------------------------------------- */
+
+.mega__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 310px;
+  flex: none;
+  align-self: stretch;
+}
+
+.mm-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 20px;
+  width: 100%;
+  flex: 1 1 0;
+  min-height: 0;
+
+  border-radius: 12px;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mm-card--store {
+  background: #fff6ec;
+}
+
+.mm-card--marketplace {
+  background: #f7f6ff;
+}
+
+.mm-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.1);
+}
+
+.mm-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
+
+.mm-card__icon {
+  width: 32px;
+  height: 32px;
+  flex: none;
+}
+
+.mm-card__icon svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.mm-card--store .mm-card__icon {
+  color: #fca715;
+}
+
+.mm-card--marketplace .mm-card__icon {
+  color: #7047eb;
+}
+
+.mm-card__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.mm-card__title {
+  font-family: var(--font-sora);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: #0f172a;
+}
+
+.mm-card__desc {
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #475569;
+}
+
+.mm-card__btn {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 24px;
+  gap: 10px;
+  height: 42px;
+  flex: none;
+
+  background: #000000;
+  border: 1px solid #0f172a;
+  border-radius: 9999px;
+
+  font-family: var(--font-lato);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  color: #ffffff;
+  white-space: nowrap;
+  transition: background-color 0.25s ease, gap 0.25s ease;
+}
+
+.mm-card__btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mm-card__btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.mm-card__btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   Narrower desktop: let the panel shrink before it ever stacks
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1220px) {
+  .mega__columns,
+  .mega__section,
+  .mega__col,
+  .mega__rail {
+    width: auto;
+  }
+
+  .mega__columns {
+    width: 100%;
+  }
+
+  .mega__rail {
+    width: 280px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Drawer: the panel becomes an inline accordion section
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+  .nav__item {
+    display: block;
+    width: 100%;
+  }
+
+  .nav__item > .nav__link {
+    justify-content: space-between;
+  }
+
+  .mega {
+    position: static;
+    translate: none;
+    width: 100%;
+    max-width: none;
+    padding: 4px 0 8px;
+    box-shadow: none;
+    border-radius: 0;
+
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .mega > * {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .nav__item.is-open .mega {
+    grid-template-rows: 1fr;
+  }
+
+  .mega__columns {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+  }
+
+  .mm-card {
+    flex: none;
+  }
+
+  .mega__subcolumns {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mega__rail {
+    width: 100%;
+    align-self: auto;
+  }
+
+  .mm-card {
+    gap: 20px;
+  }
+
+  .mm-item {
+    padding: 12px;
+  }
+}
