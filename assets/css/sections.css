@@ -306,27 +306,16 @@
   gap: 12px;
 }
 
-.avatar-stack {
-  display: flex;
-  align-items: center;
-}
-
-.avatar-stack .avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--r-full);
-  border: 2px solid var(--white);
-  margin-left: -10px;
+/* Three overlapping reviewer portraits, supplied as one 224x100 plate */
+.hero__proof-avatars {
+  height: 40px;
+  width: auto;
   flex: none;
-  overflow: hidden;
+  display: block;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.avatar-stack .avatar:first-child {
-  margin-left: 0;
-}
-
-.avatar-stack:hover .avatar {
+.hero__proof:hover .hero__proof-avatars {
   transform: translateY(-3px);
 }
 
