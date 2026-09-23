@@ -481,8 +481,8 @@
     display: none;
   }
 
-  .brand__word {
-    font-size: 22px;
+  .brand__logo {
+    height: 34px;
   }
 
   /* Keep the floating badges inside the narrower shipping stage */

@@ -949,10 +949,6 @@
   gap: 0;
 }
 
-.footer .brand__word {
-  color: var(--white);
-}
-
 .footer__about {
   margin-top: 40px;
   font-family: var(--font-lato);

@@ -35,40 +35,27 @@
   padding-inline: 24px;
 }
 
-/* Brand lock-up: 40 x 41 mark + Lalezar wordmark at 25.856px */
+/* Brand lock-up — supplied as a flat lockup, light and dark variants */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  flex: none;
 }
 
-.brand__mark {
-  width: 40.02px;
-  height: 41.14px;
-  border-radius: 11px;
-  background: var(--primary);
-  display: grid;
-  place-items: center;
-  color: var(--white);
-  flex: none;
+.brand__logo {
+  height: 41px;
+  width: auto;
+  display: block;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.brand:hover .brand__mark {
-  transform: rotate(-8deg) scale(1.06);
+.brand:hover .brand__logo {
+  transform: scale(1.04);
 }
 
-.brand__mark svg {
-  width: 22px;
-  height: 22px;
-}
-
-.brand__word {
-  font-family: var(--font-brand);
-  font-size: 25.856px;
-  line-height: 1;
-  color: #131921;
-  letter-spacing: 0.1px;
+/* The light-on-dark plate carries a little more bleed around the mark */
+.brand__logo--light {
+  height: 44px;
 }
 
 /* Centred with flexbox rather than a transform: a transformed ancestor
